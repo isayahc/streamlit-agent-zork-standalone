@@ -19,7 +19,7 @@ in the expander below. View the
 msgs = StreamlitChatMessageHistory(key="langchain_messages")
 memory = ConversationBufferMemory(chat_memory=msgs)
 if len(msgs.messages) == 0:
-    msgs.add_ai_message("How can I help you?")
+    msgs.add_ai_message("Start the game by asking 'Where am i?'")
 
 view_messages = st.expander("View the message contents in session state")
 
@@ -33,11 +33,16 @@ if not openai_api_key:
     st.stop()
 
 # Set up the LLMChain, passing in memory
-template = """You are an AI chatbot having a conversation with a human.
+template = """
+You are a game master for a Zork-style game. You must keep track of the user's game states,
+and provide a fun and challenging experience. Zork is a classic text-based adventure game,
+assist in generating text-based responses and managing the game's logic.
 
 {history}
+
+Conversation:
 Human: {human_input}
-AI: """
+AI:"""
 prompt = PromptTemplate(input_variables=["history", "human_input"], template=template)
 llm_chain = LLMChain(llm=OpenAI(openai_api_key=openai_api_key), prompt=prompt, memory=memory)
 
