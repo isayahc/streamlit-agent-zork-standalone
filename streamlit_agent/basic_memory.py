@@ -5,8 +5,8 @@ from langchain.memory.chat_message_histories import StreamlitChatMessageHistory
 from langchain.prompts import PromptTemplate
 import streamlit as st
 
-st.set_page_config(page_title="StreamlitChatMessageHistory", page_icon="📖")
-st.title("📖 StreamlitChatMessageHistory")
+st.set_page_config(page_title="StreamlitChatMessageHistory", page_icon="⚔️")
+st.title("⚔️ Zork Agent")
 
 """
 A basic example of using StreamlitChatMessageHistory to help LLMChain remember messages in a conversation.
